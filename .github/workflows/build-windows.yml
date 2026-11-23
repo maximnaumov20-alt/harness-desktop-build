@@ -59,7 +59,7 @@ jobs:
           EXPECTED_SHA: ${{ inputs.source_sha }}
         run: |
           $actual = (git rev-parse HEAD).Trim()
-          if ($actual -ne $env:EXPECTED_SHA) {
+          if ($actual -ne ($env:EXPECTED_SHA.ToLowerInvariant())) {
             throw "Checked-out commit does not match requested SHA."
           }
 
